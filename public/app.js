@@ -25,11 +25,24 @@ form.addEventListener("submit", async (e) => {
     data.files.forEach((url) => {
       const img = document.createElement("img");
       img.src = url;
-      img.style.maxWidth = "300px";
+      img.style.maxWidth = "1000px";
       img.style.margin = "5px";
+      img.style.display = "block";
       preview.appendChild(img);
     });
   } catch (err) {
     alert(err.message);
+  }
+});
+
+window.addEventListener("scroll", function () {
+  const headerScroll = document.getElementById("header-scroll");
+  const header = document.getElementById("header");
+  if (window.scrollY > 250) {
+    headerScroll.classList.add("active");
+    header.classList.add("inactive");
+  } else {
+    headerScroll.classList.remove("active");
+    header.classList.remove("inactive");
   }
 });

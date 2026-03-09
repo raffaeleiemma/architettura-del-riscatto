@@ -8,7 +8,18 @@ require("dotenv").config();
 
 const app = express();
 
-app.use(helmet());
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        imgSrc: ["'self'", "https://res.cloudinary.com"],
+        scriptSrc: ["'self'", "https://cdn.jsdelivr.net"],
+        styleSrc: ["'self'", "'unsafe-inline'"],
+      },
+    },
+  }),
+);
 app.use(express.json({ limit: "1mb" }));
 app.use(cors({ origin: process.env.CORS_ORIGIN || "*" }));
 
@@ -28,7 +39,7 @@ cloudinary.config({
 const storage = multer.memoryStorage();
 const upload = multer({
   storage,
-  limits: { fileSize: 5 * 1024 * 1024, files: 10 },
+  limits: { fileSize: 10 * 1024 * 1024, files: 10 },
   fileFilter: (req, file, cb) => {
     file.mimetype.startsWith("image/")
       ? cb(null, true)
@@ -56,7 +67,7 @@ app.post("/api/upload", uploadMiddleware, async (req, res, next) => {
     const urls = [];
     for (const file of req.files) {
       const result = await uploadToCloudinary(file.buffer, {
-        folder: "serata",
+        folder: "architettura-del-riscatto",
         transformation: [{ width: 1200, crop: "limit" }],
       });
       urls.push(result.secure_url);
@@ -84,4 +95,4 @@ app.use((err, req, res, next) => {
 });
 
 const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Server listening on port ${port}`));
+app.listen(port);

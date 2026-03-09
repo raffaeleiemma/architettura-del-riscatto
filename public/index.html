@@ -2,16 +2,267 @@
 <html lang="it">
   <head>
     <meta charset="UTF-8" />
-    <title>Upload Foto Serata</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="img/favicon.ico" />
+    <title>Centro culturale Ethos</title>
   </head>
   <body>
-    <h1>test</h1>
+    <div class="header-box">
+      <header class="header" id="header">
+        <img src="img/ethos-logo.webp" alt="Logo Ethos" class="logo" />
+        <p class="excerpt">
+          La denominazione <span class="ethos">Ethos</span>, di derivazione
+          greca, richiama il concetto di carattere, dimora e modo di abitare lo
+          spazio, sintetizzando il valore civico e collettivo attribuito
+          all’intervento. Il logotipo è concepito come segno essenziale e
+          misurato, costruito su proporzioni equilibrate e su una geometria
+          chiara, in coerenza con l’impostazione architettonica del complesso.
+          La scelta di un linguaggio grafico minimale riflette la volontà di
+          evitare ridondanze espressive, privilegiando invece leggibilità,
+          stabilità e riconoscibilità nel tempo. Il segno grafico traduce
+          visivamente il tema della radice e della crescita, alludendo alla
+          trasformazione del luogo e alla costruzione di una nuova identità
+          territoriale. La composizione del marchio è studiata per funzionare in
+          diversi supporti comunicativi, mantenendo coerenza con le scelte
+          cromatiche e materiche del progetto architettonico.
+        </p>
+        <nav class="nav">
+          <ul class="nav-list">
+            <li class="nav-item"><a href="" class="nav-link">Seduta</a></li>
+            <li class="nav-item">
+              <a href="" class="nav-link">Ringraziamenti</a>
+            </li>
+            <li class="nav-item"><a href="" class="nav-link">Cosenza</a></li>
+            <li class="nav-item">
+              <a href="#elaborati" class="nav-link">Elaborati</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <header class="header-scroll" id="header-scroll">
+        <nav class="nav-scroll" id="nav-scroll">
+          <ul class="nav-list">
+            <li><a class="nav-link" href="">Seduta</a></li>
+            <li><a class="nav-link" href="">Ringraziamenti</a></li>
+            <li><a class="nav-link" href="">Cosenza</a></li>
+            <li><a class="nav-link" href="#elaborati">Elaborati</a></li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+    <!-- <div class="spacer">Scroll Down</div> -->
+
+    <div class="image-grid-wrapper">
+      <div class="grid-layout" id="photo-grid">
+        <div class="grid-cell">
+          <picture>
+            <source
+              media="(max-width: 768px)"
+              srcset="img/area-mostra-small.webp"
+            />
+            <source
+              media="(min-width: 769px)"
+              srcset="img/area-mostra-big.png"
+            />
+
+            <img src="img/area-mostra-big.png" alt="Area mostra" />
+          </picture>
+        </div>
+        <div class="grid-cell">
+          <picture>
+            <source
+              media="(max-width: 768px)"
+              srcset="img/biblioteca-small.webp"
+            />
+            <source
+              media="(min-width: 769px)"
+              srcset="img/biblioteca-big.png"
+            />
+
+            <img src="img/biblioteca-big.png" alt="Biblioteca" />
+          </picture>
+        </div>
+        <div class="grid-cell">
+          <picture>
+            <source
+              media="(max-width: 768px)"
+              srcset="img/render-frontale-small.webp"
+            />
+            <source
+              media="(min-width: 769px)"
+              srcset="img/render-frontale-big.png"
+            />
+
+            <img src="img/render-frontale-big.png" alt="Render frontale" />
+          </picture>
+        </div>
+        <div class="grid-cell">
+          <picture>
+            <source
+              media="(max-width: 768px)"
+              srcset="img/esterno-small.webp"
+            />
+            <source media="(min-width: 769px)" srcset="img/esterno-big.png" />
+
+            <img src="img/esterno-big.png" alt="Esterno" />
+          </picture>
+        </div>
+        <div class="grid-cell">
+          <picture>
+            <source
+              media="(max-width: 768px)"
+              srcset="img/polifunz-small.webp"
+            />
+            <source media="(min-width: 769px)" srcset="img/polifunz-big.png" />
+
+            <img src="img/polifunz-big.png" alt="Polifunzionale" />
+          </picture>
+        </div>
+        <div class="grid-cell">
+          <picture>
+            <source
+              media="(max-width: 768px)"
+              srcset="img/scala-interna-small.webp"
+            />
+            <source
+              media="(min-width: 769px)"
+              srcset="img/scala-interna-big.png"
+            />
+
+            <img src="img/scala-interna-big.png" alt="Scala interna" />
+          </picture>
+        </div>
+        <div class="grid-cell">
+          <picture>
+            <source
+              media="(max-width: 768px)"
+              srcset="img/Parete-biblioteca-small.webp"
+            />
+            <source
+              media="(min-width: 769px)"
+              srcset="img/Parete-biblioteca-big.png"
+            />
+
+            <img src="img/Parete-biblioteca-big.png" alt="Parete biblioteca" />
+          </picture>
+        </div>
+        <div class="grid-cell">
+          <picture>
+            <source
+              media="(max-width: 768px)"
+              srcset="img/aula-multimediale-small.webp"
+            />
+            <source
+              media="(min-width: 769px)"
+              srcset="img/aula-multimediale-big.png"
+            />
+
+            <img src="img/aula-multimediale-big.png" alt="Aula multimediale" />
+          </picture>
+        </div>
+      </div>
+    </div>
+    <div id="elaborati" class="carousel-container">
+      <div id="track-gallery">
+        <div id="track">
+          <div class="img-wrapper">
+            <img
+              class="carousel-img"
+              src="img/tavola-1.webp"
+              alt="Person flying a helicopter"
+            />
+          </div>
+          <div class="img-wrapper">
+            <img
+              class="carousel-img"
+              src="img/tavola-2.webp"
+              alt="Flying eagle owl"
+            />
+          </div>
+          <div class="img-wrapper">
+            <img
+              class="carousel-img"
+              src="img/tavola-3.webp"
+              alt="Green Volkswagen Beetle parked on sidewalk"
+            />
+          </div>
+          <div class="img-wrapper">
+            <img
+              class="carousel-img"
+              src="img/tavola-4.webp"
+              alt="Woman with flower"
+            />
+          </div>
+          <div class="img-wrapper">
+            <img
+              class="carousel-img"
+              src="img/tavola-5.webp"
+              alt="Inside of an old building with pillars"
+            />
+          </div>
+          <div class="img-wrapper">
+            <img
+              class="carousel-img"
+              src="img/tavola-6.webp"
+              alt="People standing near a hot air balloon"
+            />
+          </div>
+          <div class="img-wrapper">
+            <img
+              class="carousel-img"
+              src="img/tavola-7.webp"
+              alt="Hurmetci landscape"
+            />
+          </div>
+          <div class="img-wrapper">
+            <img
+              class="carousel-img"
+              src="img/tavola-8.webp"
+              alt="Person holding woman’s photo beside white Fujifilm instant camera"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="wrapper">
+      <div class="slider" id="slider">
+        <div class="slide">
+          <h3 class="slide-title">Inquadramento territoriale</h3>
+          <img src="img/tavola-1.webp" alt="tavola-1" class="slide-img" />
+        </div>
+        <div class="slide">
+          <img src="img/tavola-1.webp" alt="tavola-1" class="slide-img" />
+        </div>
+        <div class="slide">
+          <img src="img/tavola-1.webp" alt="tavola-1" class="slide-img" />
+        </div>
+        <div class="slide">
+          <img src="img/tavola-1.webp" alt="tavola-1" class="slide-img" />
+        </div>
+        <div class="slide">
+          <img src="img/tavola-1.webp" alt="tavola-1" class="slide-img" />
+        </div>
+        <div class="slide">
+          <img src="img/tavola-1.webp" alt="tavola-1" class="slide-img" />
+        </div>
+        <div class="slide">
+          <img src="img/tavola-1.webp" alt="tavola-1" class="slide-img" />
+        </div>
+        <div class="slide">
+          <img src="img/tavola-1.webp" alt="tavola-1" class="slide-img" />
+        </div>
+      </div>
+    </div> -->
+    <!-- <img src="img/tavola-1.webp" alt="" /> -->
     <form id="uploadForm">
       <input type="file" name="gallery" multiple />
       <button type="submit">Carica</button>
     </form>
     <div id="preview"></div>
-
+    <footer class="footer"></footer>
     <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
+    <script src="gsap.js"></script>
   </body>
 </html>
