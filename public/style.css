@@ -64,7 +64,7 @@ html {
 .nav-list {
   display: flex;
   list-style: none;
-  justify-content: space-around;
+  justify-content: center;
 }
 .nav-link {
   font-weight: 600;
