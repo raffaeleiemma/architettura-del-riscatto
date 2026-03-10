@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     onUpdate: (self) => {
       const progress = self.progress;
-
+      console.log(self);
       if (progress < 0.5) {
         const p = progress / 0.5;
 
@@ -55,8 +55,6 @@ document.addEventListener("DOMContentLoaded", function () {
             });
           }
         });
-
-        gsap.set(carousel, { opacity: 0 });
       } else {
         const fadeProgress = (progress - 0.5) / 0.5;
 
@@ -64,9 +62,9 @@ document.addEventListener("DOMContentLoaded", function () {
           opacity: 1 - fadeProgress,
         });
 
-        gsap.set(carousel, {
-          opacity: fadeProgress,
-        });
+        // gsap.set(carousel, {
+        //   opacity: fadeProgress,
+        // });
       }
     },
   });
