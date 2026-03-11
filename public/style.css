@@ -146,8 +146,6 @@ html {
   align-items: center;
   justify-content: center;
   font-weight: 400;
-  padding-top: 0.2rem;
-  padding-left: 0.1rem;
 }
 
 .item_content {
@@ -237,7 +235,7 @@ html {
     height: 25vh;
   }
   .item_content--2 {
-    height: 17vh;
+    height: 20vh;
 
     display: flex;
   }
@@ -245,11 +243,99 @@ html {
     height: 60vh;
   }
   .tavola-space {
-    height: 17vh;
+    height: 14vh;
+    width: 100%;
   }
   .tavola {
     padding-top: 0;
     object-fit: contain;
     max-height: 66vh;
   }
+  .item_content h2 {
+    font-size: 1.1rem;
+  }
+}
+.uploads {
+  display: grid;
+  margin-top: 3rem;
+  grid-template-rows: min-content;
+  justify-items: center;
+  align-items: center;
+  padding: 1rem;
+}
+.uploads-form {
+  padding: 2rem;
+}
+.uploads-form h3 {
+  font-weight: 600;
+  text-transform: uppercase;
+}
+#uploadForm {
+  display: flex;
+  margin-top: 1rem;
+  justify-content: center;
+}
+.custom-file-btn,
+#uploadForm button {
+  display: inline-block;
+  margin: 0 0.5rem;
+  padding: 8px 16px;
+  background-color: #373536;
+  color: #eae3d8;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.custom-file-btn:hover,
+#uploadForm button:hover {
+  border: 1px solid #373536;
+  background-color: transparent;
+  color: #373536;
+}
+.file-preview {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 0.5rem 0;
+}
+
+.uploads-gallery img {
+  border-radius: 4px;
+}
+.removeBtn {
+  color: #373536;
+  background-color: #373536;
+  border-radius: 50%;
+  width: 1.6rem;
+  height: 1.6rem;
+}
+.uploads-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.uploads-gallery img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s;
+}
+
+.uploads-gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 1px 2px #373536;
+}
+#preview {
+  width: 100%;
+  padding: 1rem;
 }

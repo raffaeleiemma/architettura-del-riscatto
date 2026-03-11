@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
     <link rel="icon" href="img/favicon.ico" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css"
+    />
     <title>Centro culturale Ethos</title>
   </head>
   <body>
@@ -41,13 +45,12 @@
         </div>
         <nav class="nav">
           <ul class="nav-list">
-            <li class="nav-item"><a href="" class="nav-link">Seduta</a></li>
-            <li class="nav-item">
-              <a href="" class="nav-link">Ringraziamenti</a>
-            </li>
-            <li class="nav-item"><a href="" class="nav-link">Cosenza</a></li>
+            <li class="nav-item"><a href="" class="nav-link">Immagini</a></li>
             <li class="nav-item">
               <a href="#elaborati" class="nav-link">Elaborati</a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link">Ringraziamenti</a>
             </li>
           </ul>
         </nav>
@@ -55,15 +58,17 @@
       <header class="header-scroll" id="header-scroll">
         <nav class="nav-scroll" id="nav-scroll">
           <ul class="nav-list">
-            <li><a class="nav-link" href="">Seduta</a></li>
-            <li><a class="nav-link" href="">Ringraziamenti</a></li>
-            <li><a class="nav-link" href="">Cosenza</a></li>
-            <li><a class="nav-link" href="#elaborati">Elaborati</a></li>
+            <li class="nav-item"><a href="" class="nav-link">Immagini</a></li>
+            <li class="nav-item">
+              <a href="#elaborati" class="nav-link">Elaborati</a>
+            </li>
+            <li class="nav-item">
+              <a href="" class="nav-link">Ringraziamenti</a>
+            </li>
           </ul>
         </nav>
       </header>
     </div>
-    <!-- <div class="spacer">Scroll Down</div> -->
 
     <div class="scroll-section vertical-section section">
       <div class="wrapper">
@@ -179,15 +184,33 @@
         </div>
       </div>
     </div>
-    <form id="uploadForm">
-      <input type="file" name="gallery" multiple />
-      <button type="submit">Carica</button>
-    </form>
+    <div class="gallery">
+      <div class="uploads">
+        <div class="uploads-form">
+          <h3>Carica qui le tue immagini</h3>
+          <form id="uploadForm">
+            <input
+              type="file"
+              name="gallery"
+              id="fileInput"
+              multiple
+              style="display: none"
+            />
+            <label for="fileInput" class="custom-file-btn">Sfoglia </label>
+            <button type="submit">Carica</button>
+          </form>
+        </div>
+        <div id="preview"></div>
+        <div id="spinner" style="display: none">Caricamento...</div>
+        <div id="cloudGallery" class="uploads-gallery"></div>
+      </div>
+    </div>
     <div id="preview"></div>
     <footer class="footer"></footer>
     <script src="app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
     <script src="gsap.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
   </body>
 </html>

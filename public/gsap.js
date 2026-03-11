@@ -1,13 +1,11 @@
 gsap.registerPlugin(ScrollTrigger);
 
-// Select the HTML elements needed for the animation
 const scrollSection = document.querySelectorAll(".scroll-section");
 
 scrollSection.forEach((section) => {
   const wrapper = section.querySelector(".wrapper");
   const items = wrapper.querySelectorAll(".item");
 
-  // Initialize
   let direction = null;
 
   if (section.classList.contains("vertical-section")) {
@@ -20,7 +18,6 @@ scrollSection.forEach((section) => {
 });
 
 function initScroll(section, items, direction) {
-  // Initial states
   items.forEach((item, index) => {
     if (index !== 0) {
       direction == "horizontal"
@@ -47,7 +44,6 @@ function initScroll(section, items, direction) {
       end: () => `+=${items.length * 100}%`,
       scrub: 1,
       invalidateOnRefresh: true,
-      // markers: true,
     },
     defaults: { ease: "none" },
   });

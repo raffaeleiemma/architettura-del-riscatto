@@ -13,9 +13,9 @@ app.use(
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
-        imgSrc: ["'self'", "https://res.cloudinary.com"],
+        imgSrc: ["'self'", "blob:", "https://res.cloudinary.com"],
         scriptSrc: ["'self'", "https://cdn.jsdelivr.net"],
-        styleSrc: ["'self'", "'unsafe-inline'"],
+        styleSrc: ["'self'", "'unsafe-inline'", "https://cdn.jsdelivr.net"],
       },
     },
   }),
@@ -39,7 +39,7 @@ cloudinary.config({
 const storage = multer.memoryStorage();
 const upload = multer({
   storage,
-  limits: { fileSize: 10 * 1024 * 1024, files: 10 },
+  limits: { fileSize: 65 * 1024 * 1024, files: 10 },
   fileFilter: (req, file, cb) => {
     file.mimetype.startsWith("image/")
       ? cb(null, true)
@@ -65,32 +65,34 @@ app.post("/api/upload", uploadMiddleware, async (req, res, next) => {
 
   try {
     const urls = [];
+
     for (const file of req.files) {
       const result = await uploadToCloudinary(file.buffer, {
         folder: "architettura-del-riscatto",
         transformation: [{ width: 1200, crop: "limit" }],
       });
+
       urls.push(result.secure_url);
     }
+
     res.status(201).json({ message: "Upload completato", files: urls });
   } catch (err) {
     next(err);
   }
 });
+app.get("/api/list", async (req, res) => {
+  try {
+    const result = await cloudinary.api.resources({
+      type: "upload",
+      prefix: "architettura-del-riscatto",
+      max_results: 100,
+      direction: "desc",
+    });
 
-app.use((err, req, res, next) => {
-  if (err instanceof multer.MulterError) {
-    if (err.code === "LIMIT_FILE_SIZE") {
-      return res.status(400).json({ error: "File troppo grande" });
-    }
-    if (err.code === "LIMIT_UNEXPECTED_FILE") {
-      return res
-        .status(400)
-        .json({ error: "Troppi file caricati o campo sbagliato" });
-    }
-    return res.status(400).json({ error: err.message });
-  } else if (err) {
-    return res.status(500).json({ error: err.message });
+    const urls = result.resources.map((r) => r.secure_url);
+    res.json({ files: urls });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
   }
 });
 
