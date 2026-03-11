@@ -1,115 +1,66 @@
-document.addEventListener("DOMContentLoaded", function () {
-  gsap.registerPlugin(ScrollTrigger);
-
-  const grid = document.querySelector(".grid-layout");
-  const gridWrapper = document.querySelector(".image-grid-wrapper");
-  const umbrellaCell = grid.children[2];
-  const carousel = document.querySelector(".carousel-container");
-
-  gsap.set(carousel, { opacity: 0 });
-
-  ScrollTrigger.create({
-    trigger: gridWrapper,
-    start: "center center",
-    end: "+=80%",
-    scrub: true,
-    pin: true,
-    anticipatePin: 1,
-
-    onUpdate: (self) => {
-      const progress = self.progress;
-      console.log(self);
-      if (progress < 0.5) {
-        const p = progress / 0.5;
-
-        const col1 = Math.max(0.01, 1 - p);
-        const col2 = 1 + p * 10;
-        const col3 = Math.max(0.01, 1 - p);
-
-        const row1 = Math.max(0.01, 1 - p);
-        const row2 = 1 + p * 6;
-        const row3 = 1 + p * 6;
-        const row4 = Math.max(0.01, 1 - p);
-
-        gsap.set(grid, {
-          gridTemplateColumns: `${col1}fr ${col2}fr ${col3}fr`,
-          gridTemplateRows: `${row1}fr ${row2}fr ${row3}fr ${row4}fr`,
-          opacity: 1,
-        });
-
-        gsap.set(umbrellaCell, {
-          gridArea: "2 / 2 / 4 / 3",
-          zIndex: 10,
-        });
-
-        grid.querySelectorAll(".grid-cell").forEach((cell) => {
-          if (cell !== umbrellaCell) {
-            gsap.set(cell, {
-              opacity: 1 - p * 2,
-              scale: 1 - p * 0.2,
-            });
-          } else {
-            gsap.set(cell, {
-              opacity: 1,
-              scale: 1,
-            });
-          }
-        });
-      } else {
-        const fadeProgress = (progress - 0.5) / 0.5;
-
-        gsap.set(grid, {
-          opacity: 1 - fadeProgress,
-        });
-
-        // gsap.set(carousel, {
-        //   opacity: fadeProgress,
-        // });
-      }
-    },
-  });
-});
-
 gsap.registerPlugin(ScrollTrigger);
 
-const track = document.getElementById("track");
-const images = document.querySelectorAll(".carousel-img");
+// Select the HTML elements needed for the animation
+const scrollSection = document.querySelectorAll(".scroll-section");
 
-window.addEventListener("load", () => {
-  const totalTrackWidth = track.scrollWidth;
-  const viewportWidth = window.innerWidth;
-  const totalScrollDistance = totalTrackWidth - viewportWidth;
+scrollSection.forEach((section) => {
+  const wrapper = section.querySelector(".wrapper");
+  const items = wrapper.querySelectorAll(".item");
 
-  ScrollTrigger.create({
-    trigger: ".carousel-container",
-    start: "top top",
-    end: `+=${totalScrollDistance}`,
-    scrub: true,
-    pin: ".carousel-container",
-    anticipatePin: 1,
+  // Initialize
+  let direction = null;
 
-    onEnter: () => {
-      gsap.to("#track-gallery", { opacity: 1, duration: 1 });
-    },
-    onEnterBack: () => {
-      gsap.to("#track-gallery", { opacity: 1, duration: 1 });
-    },
-    onLeaveBack: () => {
-      gsap.to("#track-gallery", { opacity: 0, duration: 0.5 });
-    },
+  if (section.classList.contains("vertical-section")) {
+    direction = "vertical";
+  } else if (section.classList.contains("horizontal-section")) {
+    direction = "horizontal";
+  }
 
-    onUpdate: (self) => {
-      const progress = self.progress;
-      const xMove = -progress * totalScrollDistance;
-
-      gsap.set(track, {
-        x: xMove,
-      });
-
-      const pan = 100 + (progress - 0.5) * 40;
-      images.forEach((img) => {
-        img.style.objectPosition = `${pan}% center`;
-      });
-    },
-  });
+  initScroll(section, items, direction);
 });
+
+function initScroll(section, items, direction) {
+  // Initial states
+  items.forEach((item, index) => {
+    if (index !== 0) {
+      direction == "horizontal"
+        ? gsap.set(item, { xPercent: 100 })
+        : gsap.set(item, { yPercent: 100 });
+    }
+  });
+
+  const timeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: section,
+      pin: true,
+      start: "top top",
+      end: () => `+=${items.length * 100}%`,
+      scrub: 1,
+      invalidateOnRefresh: true,
+      // markers: true,
+    },
+    defaults: { ease: "none" },
+  });
+  items.forEach((item, index) => {
+    timeline.to(item, {
+      scale: 0.9,
+      borderRadius: "10px",
+    });
+
+    direction == "horizontal"
+      ? timeline.to(
+          items[index + 1],
+          {
+            xPercent: 0,
+          },
+          "<",
+        )
+      : timeline.to(
+          items[index + 1],
+          {
+            yPercent: 0,
+          },
+          "<",
+        );
+  });
+}
