@@ -28,7 +28,17 @@ function initScroll(section, items, direction) {
         : gsap.set(item, { yPercent: 100 });
     }
   });
-
+  gsap.from(items[0], {
+    opacity: 0,
+    y: 80,
+    duration: 1,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: section,
+      start: "top 80%",
+      toggleActions: "restart none none none",
+    },
+  });
   const timeline = gsap.timeline({
     scrollTrigger: {
       trigger: section,

@@ -131,6 +131,7 @@ html {
   overflow: hidden;
   will-change: transform;
   background-color: #f7f5f3;
+  will-change: transform;
 }
 
 .item_number {
@@ -186,7 +187,7 @@ html {
   padding: 2rem;
 }
 
-@media only screen and (max-width: 750.98px) {
+@media only screen and (max-width: 600px) {
   .header-box {
     padding: 0;
   }
@@ -236,17 +237,19 @@ html {
     height: 25vh;
   }
   .item_content--2 {
-    height: 20vh;
-    padding-top: 4rem;
+    height: 17vh;
+
     display: flex;
   }
   .item_media {
     height: 60vh;
   }
   .tavola-space {
-    height: 20vh;
+    height: 17vh;
   }
   .tavola {
     padding-top: 0;
+    object-fit: contain;
+    max-height: 66vh;
   }
 }
