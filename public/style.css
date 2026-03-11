@@ -54,6 +54,9 @@ html {
   border-top: 4px solid #373536;
   border-bottom: 4px solid #373536;
 }
+.excerpt p {
+  margin-bottom: 1rem;
+}
 .ethos {
   font-weight: 600;
 }
@@ -88,21 +91,17 @@ html {
 
   transition:
     transform 1.35s ease-out,
-    box-shadow 0.35s ease;
+    box-shadow 0.35s ease,
+    opacity 1s ease-out;
 
   background: #eae3d8;
+  opacity: 0;
 }
 
 .header-scroll.active {
   transform: translateY(0);
-
-  box-shadow: 0 6px 20px #373536;
-}
-@media (max-width: 600px) {
-  .hero {
-    grid-template-columns: repeat(2, 50%);
-    grid-template-rows: repeat(3, 33.3%);
-  }
+  opacity: 1;
+  box-shadow: 0px 1px 2px #373536;
 }
 
 .section {
@@ -128,8 +127,10 @@ html {
   display: flex;
   position: absolute;
   inset: 0%;
-  box-shadow: #373536 0px 8px 24px;
+  box-shadow: 0px 1px 2px #373536;
   overflow: hidden;
+  will-change: transform;
+  background-color: #f7f5f3;
 }
 
 .item_number {
@@ -161,18 +162,20 @@ html {
   width: 30%;
 }
 .item_content--2 {
-  width: 50%;
+  width: 25%;
 }
 .item_media {
-  object-fit: cover;
+  object-fit: contain;
   width: 70%;
   height: 100%;
+  background-color: #373536;
 }
 .tavola {
   width: auto;
   height: 100%;
-  padding-top: 5rem;
-  background-color: #f7f5f3;
+}
+.tavola-space {
+  width: 25%;
 }
 .padding-global {
   padding-left: 2.5rem;
@@ -183,7 +186,33 @@ html {
   padding: 2rem;
 }
 
-@media (max-width: 750.98px) {
+@media only screen and (max-width: 750.98px) {
+  .header-box {
+    padding: 0;
+  }
+  .header {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    padding: 1rem;
+  }
+
+  .logo {
+    width: 5rem;
+    justify-self: center;
+  }
+
+  .excerpt {
+    padding: 0.5rem;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+    border-top: 2px solid #373536;
+    border-bottom: 2px solid #373536;
+  }
+
+  .nav-list {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
   .heading {
     font-size: 2.5rem;
   }
@@ -199,16 +228,23 @@ html {
     padding-top: 0;
     padding-bottom: 0;
   }
+  .space {
+    height: 25vh;
+    background-color: #9e4b3f;
+  }
   .item_content--1 {
-    height: 30vh;
+    height: 25vh;
   }
   .item_content--2 {
-    height: 40vh;
+    height: 20vh;
     padding-top: 4rem;
     display: flex;
   }
   .item_media {
-    height: 70vh;
+    height: 60vh;
+  }
+  .tavola-space {
+    height: 20vh;
   }
   .tavola {
     padding-top: 0;

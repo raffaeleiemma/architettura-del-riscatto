@@ -35,14 +35,32 @@ form.addEventListener("submit", async (e) => {
   }
 });
 
+let lastScroll = 0;
+
 window.addEventListener("scroll", function () {
   const headerScroll = document.getElementById("header-scroll");
   const header = document.getElementById("header");
-  if (window.scrollY > 250) {
-    headerScroll.classList.add("active");
+  const headerBox = document.querySelector(".header-box");
+
+  const currentScroll = window.scrollY;
+  const headerBoxBottom = headerBox.offsetHeight;
+
+  // quando usciamo dalla header originale
+  if (currentScroll > headerBoxBottom) {
     header.classList.add("inactive");
+
+    if (currentScroll < lastScroll) {
+      // scroll verso l'alto
+      headerScroll.classList.add("active");
+    } else {
+      // scroll verso il basso
+      headerScroll.classList.remove("active");
+    }
   } else {
-    headerScroll.classList.remove("active");
+    // siamo ancora nella header originale
     header.classList.remove("inactive");
+    headerScroll.classList.remove("active");
   }
+
+  lastScroll = currentScroll;
 });
