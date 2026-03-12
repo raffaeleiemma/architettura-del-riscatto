@@ -45,7 +45,9 @@
         </div>
         <nav class="nav">
           <ul class="nav-list">
-            <li class="nav-item"><a href="" class="nav-link">Immagini</a></li>
+            <li class="nav-item">
+              <a href="#gallery" class="nav-link">Immagini</a>
+            </li>
             <li class="nav-item">
               <a href="#elaborati" class="nav-link">Elaborati</a>
             </li>
@@ -58,7 +60,9 @@
       <header class="header-scroll" id="header-scroll">
         <nav class="nav-scroll" id="nav-scroll">
           <ul class="nav-list">
-            <li class="nav-item"><a href="" class="nav-link">Immagini</a></li>
+            <li class="nav-item">
+              <a href="#gallery" class="nav-link">Immagini</a>
+            </li>
             <li class="nav-item">
               <a href="#elaborati" class="nav-link">Elaborati</a>
             </li>
@@ -184,10 +188,29 @@
         </div>
       </div>
     </div>
-    <div class="gallery">
+    <div class="degree">
+      <div class="person">
+        <div class="person-position">
+          <h4 class="degree-date">13 | 03 | 2026</h4>
+          <h3 class="person-name">Serena Ficara</h3>
+        </div>
+      </div>
+      <div class="uni">
+        <div class="uni-position">
+          <h1 class="course">
+            Laurea in<br /><span>Ingegneria Edile | Architettura</span>
+          </h1>
+          <h3 class="uni-name">Università della Calabria</h3>
+        </div>
+      </div>
+    </div>
+    <div class="gallery" id="gallery">
       <div class="uploads">
         <div class="uploads-form">
-          <h3>Carica qui le tue immagini</h3>
+          <h3 class="images-title">
+            Condividi qui le foto della giornata... e della serata
+          </h3>
+          <p class="max">Massimo 10 foto per caricamento</p>
           <form id="uploadForm">
             <input
               type="file"
@@ -204,13 +227,17 @@
         <div id="spinner" style="display: none">Caricamento...</div>
         <div id="cloudGallery" class="uploads-gallery"></div>
       </div>
+      <div class="space-5"></div>
+      <h3 class="images-title">Vita da studentessa di ingegneria...</h3>
+      <div class="space-3"></div>
+      <div id="cosenzaGallery" class="cosenza-gallery"></div>
     </div>
-    <div id="preview"></div>
+    <div class="space-5"></div>
     <footer class="footer"></footer>
-    <script src="app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3/dist/ScrollTrigger.min.js"></script>
     <script src="gsap.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+    <script src="app.js"></script>
   </body>
 </html>

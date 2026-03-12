@@ -255,6 +255,12 @@ html {
     font-size: 1.1rem;
   }
 }
+.max {
+  font-style: italic;
+  font-size: 0.9rem;
+  margin-top: 0.2rem;
+  text-align: center;
+}
 .uploads {
   display: grid;
   margin-top: 3rem;
@@ -266,9 +272,10 @@ html {
 .uploads-form {
   padding: 2rem;
 }
-.uploads-form h3 {
+.images-title {
   font-weight: 600;
   text-transform: uppercase;
+  text-align: center;
 }
 #uploadForm {
   display: flex;
@@ -338,4 +345,64 @@ html {
 #preview {
   width: 100%;
   padding: 1rem;
+}
+.degree {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  height: 24rem;
+  margin: 5rem 0;
+  box-shadow: 0px 1px 2px #373536;
+}
+.person,
+.uni {
+  width: 100%;
+
+  height: 100%;
+}
+.person,
+.uni {
+  position: relative;
+}
+.person {
+  background-color: #373536;
+}
+.uni {
+  background-color: #9e4b3f;
+}
+.person-position,
+.uni-position {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+}
+.degree-date,
+.person-name,
+.course,
+.uni-name {
+  color: #eae3d8;
+}
+.person-name,
+.course span {
+  font-weight: 600;
+}
+.person-name,
+.uni-name {
+  margin-top: 0.7rem;
+}
+.cosenza-gallery {
+  column-count: 4; /* numero di colonne */
+  column-gap: 10px;
+  background-color: #373536;
+}
+
+.cosenza-gallery img {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.space-5 {
+  height: 5rem;
+  border-top: 1px solid #373536;
+}
+.space-3 {
+  height: 3rem;
 }

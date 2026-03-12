@@ -42,6 +42,20 @@ fileInput.addEventListener("change", () => {
 });
 
 window.addEventListener("DOMContentLoaded", async () => {
+  const cosenzaGallery = document.getElementById("cosenzaGallery");
+
+  for (let i = 1; i < 86; i++) {
+    const a = document.createElement("a");
+    a.href = `img/cosenza/img-${i}.jpg`;
+    a.setAttribute("data-gallery", "cosenzaGallery");
+
+    const img = document.createElement("img");
+    img.src = `img/cosenza/img-${i}.jpg`;
+    img.loading = "lazy";
+
+    a.appendChild(img);
+    cosenzaGallery.appendChild(a);
+  }
   try {
     const res = await fetch("/api/list");
     const data = await res.json();
@@ -63,7 +77,7 @@ window.addEventListener("DOMContentLoaded", async () => {
     });
 
     const lightbox = GLightbox({
-      selector: 'a[data-gallery="cloudGallery"]',
+      selector: "a[data-gallery]",
       loop: true,
       zoomable: true,
       draggable: true,
